@@ -11,17 +11,18 @@ This repo has removed all of the unwanted starter code that is normally included
 - `cd` into the folder
 - in the terminal run `git remote remove origin` in order to remove any connection to this Github folder.
 - change the name of this directory to a name that refers to your current project. Don't just leave it as `basic-starter`
+- run `npm install`
+- to start the project, run `npm run dev`
+- no navigate to `localhost:3000` and you will see the app
 - Now you are ready to code
-- If you would like to connect this afterwards to your personal github then:
 
-  - go to your Github account in the browser
-  - create a new repo and give it a name
-  - make sure the repo is public and click `Create Repository`
-  - copy and paste the instructions under the title `…or push an existing repository from the command line`
-  - run `npm install`
-  - to start the project, run `npm run dev`
-  - no navigate to `localhost:3000` and you will see the app
+If you would like to connect this afterwards to your personal Github then:
 
-  You have now connected your project to the repo.
+- go to your Github account in the browser
+- create a new repo and give it a name
+- make sure the repo is public and click `Create Repository`
+- copy and paste the instructions under the title `…or push an existing repository from the command line`
 
-  You have the ability to clone this repo over and over to create your own projects. Just remember to change the name of the folder so that you do not have duplicates
+You have now connected your project to the repo.
+
+You have the ability to clone this repo over and over to create your own projects. Just remember to change the name of the folder so that you do not have duplicates
