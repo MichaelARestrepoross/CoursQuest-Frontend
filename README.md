@@ -1,8 +1,27 @@
-# React + Vite
+# Basic React Starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+You can use this starter to create any ReactJS app you would like.
+Unlike when you use `npm create vite@latest your-app-name -- --template react`,
 
-Currently, two official plugins are available:
+This repo has removed all of the unwanted starter code that is normally included when using `npm` to create an application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting started
+
+- `clone` this application
+- `cd` into the folder
+- in the terminal run `git remote remove origin` in order to remove any connection to this Github folder.
+- change the name of this directory to a name that refers to your current project. Don't just leave it as `basic-starter`
+- Now you are ready to code
+- If you would like to connect this afterwards to your personal github then:
+
+  - go to your Github account in the browser
+  - create a new repo and give it a name
+  - make sure the repo is public and click `Create Repository`
+  - copy and paste the instructions under the title `…or push an existing repository from the command line`
+  - run `npm install`
+  - to start the project, run `npm run dev`
+  - no navigate to `localhost:3000` and you will see the app
+
+  You have now connected your project to the repo.
+
+  You have the ability to clone this repo over and over to create your own projects. Just remember to change the name of the folder so that you do not have duplicates
