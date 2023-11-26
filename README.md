@@ -8,9 +8,11 @@ This repo has removed all of the unwanted starter code that is normally included
 ## Getting started
 
 - `clone` this application
-- `cd` into the folder
+- change the name of this directory to a name that refers to your current project. Don't just leave it as `react-basic-starter`
+  _Hint:_ In the terminal, type `mv react-basic-starter new-name-of-your-app`
+- `cd` into the app
 - in the terminal run `git remote remove origin` in order to remove any connection to this Github folder.
-- change the name of this directory to a name that refers to your current project. Don't just leave it as `basic-starter`
+
 - run `npm install`
 - to start the project, run `npm run dev`
 - no navigate to `localhost:3000` and you will see the app
