@@ -12,9 +12,7 @@ import UserDetails from "./Components/UserDetails";
 
 const App = () => {
   //define api url
-  // const API = import.meta.env.VITE_API_URL;
-
-  const API = "http://localhost:3003"; // Temporarily hardcoding the URL for testing
+  const API = import.meta.env.VITE_API_URL;
 
   //usestate for all courses
   const [courses, setCourses] = useState([]);
