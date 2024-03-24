@@ -24,7 +24,7 @@ const UserDetails = () => {
   return (
     <div className="container mx-auto px-4">
       {user && (
-        <div>
+        <div className='mb-6'>
           <h2 className="text-3xl font-bold mb-8">User Account</h2>
           <div className="bg-gray-200 rounded-lg p-6 mb-8">
             <p className="text-lg">
@@ -38,6 +38,8 @@ const UserDetails = () => {
               {user.is_faculty ? <span>&#10003;</span> : <span>&#10060;</span>}
             </p>
           </div>
+          <h3 className="text-2xl font-bold mb-4">My Courses</h3>
+          <div className="border-b-2 border-gray-300 mb-6"></div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {user.filteredCourses.map(course => (
               <div key={course.id} className="bg-white rounded-lg shadow-md p-6" onClick={()=>navigateCourse(course.id)}>
