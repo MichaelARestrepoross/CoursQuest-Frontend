@@ -1,6 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 const SingleCourse = ({ course }) => {
+  const navigate = useNavigate();
+
+  function navigateCourse(Id) {
+    navigate(`/courses/${Id}`);
+  }
   return (
-    <div className="shadow-2xl rounded-xl overflow-hidden bg-white hover:scale-105 transition-transform duration-300">
+    <div
+      className="shadow-2xl rounded-xl overflow-hidden bg-white hover:scale-105 transition-transform duration-300"
+      onClick={() => navigateCourse(course.id)}
+    >
       {/* <img
         className="rounded-t-xl w-full h-24 object-cover"
         src={course.image_url}
