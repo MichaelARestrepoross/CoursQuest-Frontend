@@ -22,9 +22,10 @@ const DetailedCourse = ({ API }) => {
     end_date,
     difficulty,
     cost,
+    filterdReviews,
   } = course;
 
-  // function for formatting the date
+  // Function for formatting the date
   function formatDate(dateString) {
     const date = new Date(dateString);
 
@@ -50,6 +51,22 @@ const DetailedCourse = ({ API }) => {
     return `${month} ${day}, ${year}`;
   }
 
+  // Function to get the appropriate class for difficulty
+  function getDifficultyColor(difficulty) {
+    switch (difficulty) {
+      case "Beginner":
+        return "text-green-500";
+      case "Intermediate":
+        return "text-yellow-500";
+      case "Advanced":
+        return "text-red-500";
+      default:
+        return "";
+    }
+  }
+
+  // const { user_id, course_id, rating, review } = reviews;
+
   return (
     <div className="h-screen p-12 md:p-14 lg:p-16 xl:p-20 cursor-pointer">
       <div>
@@ -57,19 +74,27 @@ const DetailedCourse = ({ API }) => {
       </div>
       <div className="bg-twitter-blue">
         <h1>{name}</h1>
+        <p>Description: {description}</p>
+        {/* <>Rating: {"⭐️".repeat(rating)} </> */}
         <p className="date">Start Date: {formatDate(start_date)}</p>
         <p className="date">End Date: {formatDate(end_date)}</p>
-        <p>Difficulty: {difficulty}</p>
-
+        <p>
+          Difficulty:{" "}
+          <span className={getDifficultyColor(difficulty)}>{difficulty}</span>
+        </p>
         <p>Subject: {subject}</p>
         <p>Instructor: {professor}</p>
-        <p>Description: {description}</p>
         {cost === "0.00" ? (
           <p style={{ color: "green" }}>FREE</p>
         ) : (
           <p>Cost: ${cost}</p>
         )}
       </div>
+      <section>
+        {/* <h1>Reviews</h1> */}
+        <h2>Username: </h2>
+        {/* <p>{review}</p> */}
+      </section>
     </div>
   );
 };
