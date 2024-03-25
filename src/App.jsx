@@ -7,13 +7,12 @@ import CoursesIndex from "./Components/CoursesIndex";
 import DetailedCourse from "./Components/DetailedCourse";
 import ReviewForm from "./Components/ReviewForm";
 import AboutTheDevs from "./Components/CommonComponents/AboutTheDevs";
-import ReviewsIndex from "./Components/ReviewsIndex";
+
 import UserDetails from "./Components/UserDetails";
 
 const App = () => {
   //define api url
   const API = import.meta.env.VITE_API_URL;
-
 
   //usestate for all courses
   const [courses, setCourses] = useState([]);
@@ -23,9 +22,6 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, []);
-
-  // console.log(courses);
-
 
   return (
     <div className="font-noto-sans">
@@ -37,8 +33,8 @@ const App = () => {
           <Route path="/courses/:id" element={<DetailedCourse API={API} />} />
           <Route path="/courses/:id/edit" element={<ReviewForm API={API} />} />
           <Route path="/courses/new" element={<ReviewForm API={API} />} />
-          <Route path="/courses/reviews" element={<ReviewsIndex  API={API}/>} />
-          <Route path="/account" element={<UserDetails API={API}/>} />
+
+          <Route path="/account" element={<UserDetails API={API} />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
         </Routes>
         <Footer />
