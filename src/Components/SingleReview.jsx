@@ -1,23 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const SingleReview = ({ API }) => {
-  const [review, setReview] = useState(null);
+const SingleReview = ({ review, API }) => {
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    fetch(`${API}/api/reviews/1`)
+    fetch(`${API}/api/users/${review.user_id}`)
       .then(response => response.json())
-      .then(data => {
-        setReview(data);
-        fetch(`${API}/api/users/${data.user_id}`)
-          .then(response => response.json())
-          .then(userData => {
-            setUserName(userData.name);
-          })
-          .catch(error => console.error('Error fetching user:', error));
+      .then(userData => {
+        setUserName(userData.name);
       })
-      .catch(error => console.error('Error fetching review:', error));
-  }, []);
+      .catch(error => console.error('Error fetching user:', error));
+  }, [API, review.user_id]);
 
   return (
     <div>
@@ -26,7 +19,6 @@ const SingleReview = ({ API }) => {
           <div className="flex justify-between">
             <p className="text-lg font-bold">{userName}:</p>
             <p className="text-lg ml-2">
-              <span className="font-bold">Rating: </span>
               {"⭐️".repeat(review.rating)}
             </p>
           </div>
