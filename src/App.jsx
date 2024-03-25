@@ -14,6 +14,8 @@ const App = () => {
   //define api url
   const API = import.meta.env.VITE_API_URL;
 
+  // Temporarily hardcoding the URL for testing
+
   return (
     <div className="">
       <div>
