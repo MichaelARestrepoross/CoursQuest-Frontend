@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SingleCourse from './SingleCourse';
-const UserDetails = () => {
+import App from '../App';
+const UserDetails = ({API}) => {
   // const { id } = useParams();
 
   const [user, setUser] = useState(null);
-  const URL = 'http://localhost:3003/api/users/1';
+  const URL = `${API}/api/users/1`;
   const navigate = useNavigate()
 
   function navigateCourse(Id){

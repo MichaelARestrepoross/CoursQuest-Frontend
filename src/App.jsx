@@ -37,8 +37,8 @@ const App = () => {
           <Route path="/courses/:id" element={<DetailedCourse API={API} />} />
           <Route path="/courses/:id/edit" element={<ReviewForm API={API} />} />
           <Route path="/courses/new" element={<ReviewForm API={API} />} />
-          <Route path="/courses/reviews" element={<ReviewsIndex />} />
-          <Route path="/account" element={<UserDetails />} />
+          <Route path="/courses/reviews" element={<ReviewsIndex  API={API}/>} />
+          <Route path="/account" element={<UserDetails API={API}/>} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
         </Routes>
         <Footer />
