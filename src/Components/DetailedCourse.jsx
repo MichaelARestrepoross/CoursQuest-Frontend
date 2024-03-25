@@ -6,7 +6,7 @@ const DetailedCourse = ({ API }) => {
   const [course, setCourse] = useState([]);
 
   useEffect(() => {
-    fetch(`${API}/courses/${id}`)
+    fetch(`${API}/api/courses/${id}`)
       .then((res) => res.json())
       .then((data) => setCourse(data))
       .catch((error) => console.error(error));
