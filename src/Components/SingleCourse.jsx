@@ -6,6 +6,7 @@ const SingleCourse = ({ course }) => {
   function navigateCourse(Id) {
     navigate(`/courses/${Id}`);
   }
+
   return (
     <div
       className="shadow-2xl rounded-xl overflow-hidden bg-white hover:scale-105 transition-transform duration-300"
