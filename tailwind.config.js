@@ -2,10 +2,27 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    colors: {
-      "twitter-blue": "#1DA1F2",
-    },
+
     extend: {},
+
+    extend: {
+      fontFamily: {
+        "noto-sans": ['"Noto Sans Symbols"', "sans-serif"],
+      },
+      fontWeight: {
+        // Define weight classes from 100 to 900
+        100: 100,
+        200: 200,
+        300: 300,
+        400: 400,
+        500: 500,
+        600: 600,
+        700: 700,
+        800: 800,
+        900: 900,
+      },
+    },
+
   },
   plugins: [],
 };
