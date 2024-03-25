@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import SingleCourse from './SingleCourse';
 const UserDetails = () => {
   // const { id } = useParams();
 
@@ -42,20 +42,7 @@ const UserDetails = () => {
           <div className="border-b-2 border-gray-300 mb-6"></div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {user.filteredCourses.map(course => (
-              <div key={course.id} className="bg-white rounded-lg shadow-md p-6" onClick={()=>navigateCourse(course.id)}>
-                <p className="text-lg">
-                  <span className="font-bold">Name:</span> {course.name}
-                </p>
-                <p className="text-lg">
-                  <span className="font-bold">Subject:</span> {course.subject}
-                </p>
-                <p className="text-lg">
-                  <span className="font-bold">Difficulty:</span> {course.difficulty}
-                </p>
-                <p className="text-lg">
-                  <span className="font-bold">Cost:</span> ${course.cost}
-                </p>
-              </div>
+              <SingleCourse key={course.id} course={course} />
             ))}
           </div>
         </div>
