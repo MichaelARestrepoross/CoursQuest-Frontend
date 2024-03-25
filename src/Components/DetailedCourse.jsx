@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ReviewsIndex from "./ReviewsIndex";
 
 const DetailedCourse = ({ API }) => {
   const { id } = useParams();
@@ -65,8 +66,6 @@ const DetailedCourse = ({ API }) => {
     }
   }
 
-  // const { user_id, course_id, rating, review } = reviews;
-
   return (
     <div className="h-screen p-12 md:p-14 lg:p-16 xl:p-20 cursor-pointer">
       <div>
@@ -91,7 +90,9 @@ const DetailedCourse = ({ API }) => {
         )}
       </div>
       <section>
-        {/* <h1>Reviews</h1> */}
+        <h1>Reviews</h1>
+        <ReviewsIndex filterdReviews={filterdReviews} API={API} />
+
         <h2>Username: </h2>
         {/* <p>{review}</p> */}
       </section>

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import SingleCourse from "./SingleCourse";
 
 const CoursesIndex = ({ courses }) => {
-  console.log(courses);
   return (
     <>
       <div className="mx-16 py-12">
