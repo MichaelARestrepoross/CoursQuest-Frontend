@@ -2,6 +2,9 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+
+    extend: {},
+
     extend: {
       fontFamily: {
         "noto-sans": ['"Noto Sans Symbols"', "sans-serif"],
@@ -19,6 +22,7 @@ export default {
         900: 900,
       },
     },
+
   },
   plugins: [],
 };

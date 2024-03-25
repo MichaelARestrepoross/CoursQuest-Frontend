@@ -14,6 +14,7 @@ const App = () => {
   //define api url
   const API = import.meta.env.VITE_API_URL;
 
+
   //usestate for all courses
   const [courses, setCourses] = useState([]);
 
@@ -24,6 +25,7 @@ const App = () => {
   }, []);
 
   // console.log(courses);
+
 
   return (
     <div className="font-noto-sans">
