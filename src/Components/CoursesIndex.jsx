@@ -10,6 +10,27 @@ const CoursesIndex = ({ API }) => {
   const [courses, setCourses] = useState([]);
   //useState for search bar inputs
   const [input, setInput] = useState("");
+  // useState for selected subject
+  const [selectedSubject, setSelectedSubject] = useState("");
+
+  // Function to filter courses by subject
+  function filterCoursesBySubject(subject) {
+    if (subject === "All") {
+      setCourses(allCourses);
+    } else {
+      const filtered = allCourses.filter(
+        (course) => course.subject === subject
+      );
+      setCourses(filtered);
+    }
+  }
+
+  // Function to handle subject filter change
+  function handleSubjectChange(event) {
+    const subject = event.target.value;
+    setSelectedSubject(subject);
+    filterCoursesBySubject(subject);
+  }
 
   function filteredCourses(input, courses) {
     return courses.filter((course) => {
@@ -33,7 +54,13 @@ const CoursesIndex = ({ API }) => {
         setAllCourses(data);
         setCourses(data);
       });
-  }, []);
+  }, [API]);
+
+  // Extract all unique subjects
+  const subjects = [
+    "All",
+    ...new Set(allCourses.map((course) => course.subject)),
+  ];
 
   return (
     <>
@@ -53,7 +80,21 @@ const CoursesIndex = ({ API }) => {
               onChange={handleSearchChange}
             />
           </div>
+          <div className="ml-4">
+            <select
+              className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              value={selectedSubject}
+              onChange={handleSubjectChange}
+            >
+              {subjects.map((subject, index) => (
+                <option key={index} value={subject}>
+                  {subject}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
+
         <div className="text-4xl font-extrabold">Courses</div>
         <hr className="mt-1 mb-6 border-2" />
         <div>
