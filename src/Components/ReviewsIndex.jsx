@@ -6,12 +6,16 @@ const ReviewsIndex = ({ API, filterdReviews, user,id, reviewToggle,setReviewTogg
   const navigate = useNavigate();
 
   function navigateNewForm(id){
-    navigate(`http://localhost:3000/courses/${id}/new`)
+    navigate(`/courses/${id}/new`)
   }
 
   return (
     <div className="container mx-auto px-4 border border-gray-300 rounded-lg shadow-md p-2">
-      <div className="bg-slate-400 text-center py-4">Course Reviews</div>
+      <div className="bg-slate-400 text-center py-4 flex justify-between items-center m-2">
+        <h1></h1>
+        <h2 className=""> Course Reviews</h2>
+        <button onClick={() => navigateNewForm(id)} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">New Review 📝</button>
+      </div>
       <div className="gap-4">
         {filterdReviews &&
           filterdReviews.map((review) => (

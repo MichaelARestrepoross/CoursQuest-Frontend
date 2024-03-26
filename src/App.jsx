@@ -39,7 +39,7 @@ const App = () => {
           <Route path="/courses" element={<CoursesIndex courses={courses} />} />
           <Route path="/courses/:id" element={<DetailedCourse API={API} user = {user} />} />
           <Route path="/courses/:id/edit/:reviewId" element={<ReviewForm API={API} user = {user}/>} />
-          <Route path="/courses/new" element={<ReviewForm API={API} user ={user} />} />
+          <Route path="/courses/:id/new" element={<ReviewForm API={API} user ={user} />} />
 
           <Route path="/account" element={<UserDetails API={API} />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
