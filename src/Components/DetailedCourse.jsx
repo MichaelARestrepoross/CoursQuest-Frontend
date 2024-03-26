@@ -5,13 +5,14 @@ import ReviewsIndex from "./ReviewsIndex";
 const DetailedCourse = ({ API, user }) => {
   const { id } = useParams();
   const [course, setCourse] = useState([]);
+  const [reviewToggle, setReviewToggle]= useState(false);
 
   useEffect(() => {
     fetch(`${API}/api/courses/${id}`)
       .then((res) => res.json())
       .then((data) => setCourse(data))
       .catch((error) => console.error(error));
-  }, [id]);
+  }, [id,reviewToggle]);
 
   const {
     name,
@@ -91,7 +92,7 @@ const DetailedCourse = ({ API, user }) => {
       </div>
       <section>
         <h1>Reviews</h1>
-        <ReviewsIndex filterdReviews={filterdReviews} API={API} user = {user}/>
+        <ReviewsIndex filterdReviews={filterdReviews} API={API} user = {user} id = {course.id} reviewToggle= {reviewToggle} setReviewToggle= {setReviewToggle}/>
 
         <h2>Username: </h2>
         {/* <p>{review}</p> */}
