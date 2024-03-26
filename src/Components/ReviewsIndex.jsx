@@ -3,7 +3,11 @@ import SingleReview from "./SingleReview";
 import { useNavigate } from "react-router-dom";
 
 const ReviewsIndex = ({ API, filterdReviews, user,id, reviewToggle,setReviewToggle }) => {
-  // const [reviews, setReviews] = useState(filteredReviews);
+  const navigate = useNavigate();
+
+  function navigateNewForm(id){
+    navigate(`http://localhost:3000/courses/${id}/new`)
+  }
 
   return (
     <div className="container mx-auto px-4 border border-gray-300 rounded-lg shadow-md p-2">
