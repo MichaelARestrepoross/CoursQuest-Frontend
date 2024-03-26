@@ -17,7 +17,7 @@ const App = () => {
   //usestate for all courses
   const [courses, setCourses] = useState([]);
   const [user, setUser] = useState([]);
-
+  
   useEffect(() => {
     fetch(`${API}/api/courses`)
       .then((res) => res.json())
@@ -38,7 +38,7 @@ const App = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/courses" element={<CoursesIndex courses={courses} />} />
           <Route path="/courses/:id" element={<DetailedCourse API={API} user = {user} />} />
-          <Route path="/courses/:id/edit" element={<ReviewForm API={API} user = {user}/>} />
+          <Route path="/courses/:id/edit/:reviewId" element={<ReviewForm API={API} user = {user}/>} />
           <Route path="/courses/new" element={<ReviewForm API={API} user ={user} />} />
 
           <Route path="/account" element={<UserDetails API={API} />} />

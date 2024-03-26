@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import SingleReview from "./SingleReview";
+import { useNavigate } from "react-router-dom";
 
-const ReviewsIndex = ({ API, filterdReviews, user }) => {
+const ReviewsIndex = ({ API, filterdReviews, user,id, reviewToggle,setReviewToggle }) => {
   // const [reviews, setReviews] = useState(filteredReviews);
 
   return (
@@ -11,7 +12,7 @@ const ReviewsIndex = ({ API, filterdReviews, user }) => {
         {filterdReviews &&
           filterdReviews.map((review) => (
             <div key={review.id}>
-              <SingleReview review={review} API={API} user ={user} />
+              <SingleReview review={review} API={API} user ={user} id = {id} reviewToggle={reviewToggle} setReviewToggle ={setReviewToggle} />
             </div>
           ))}
       </div>
