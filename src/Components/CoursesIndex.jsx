@@ -4,44 +4,41 @@ import SingleCourse from "./SingleCourse";
 import { Search } from "lucide-react";
 
 const CoursesIndex = ({ API }) => {
-  //useState for All Courses
+  // useState for All Courses
   const [allCourses, setAllCourses] = useState([]);
-  //useState for filtered courses
+  // useState for filtered courses
   const [courses, setCourses] = useState([]);
-  //useState for search bar inputs
+  // useState for search bar inputs
   const [input, setInput] = useState("");
-  // useState for selected subject
-  const [selectedSubject, setSelectedSubject] = useState("");
+  // useState for selected filter
+  const [selectedFilter, setSelectedFilter] = useState("");
 
-  // Function to filter courses by subject
-  function filterCoursesBySubject(subject) {
-    if (subject === "All") {
+  // Function to filter courses based on selected filter
+  function filterCourses(filter) {
+    if (filter === "All") {
       setCourses(allCourses);
     } else {
       const filtered = allCourses.filter(
-        (course) => course.subject === subject
+        (course) => course.subject === filter || course.difficulty === filter
       );
       setCourses(filtered);
     }
   }
 
-  // Function to handle subject filter change
-  function handleSubjectChange(event) {
-    const subject = event.target.value;
-    setSelectedSubject(subject);
-    filterCoursesBySubject(subject);
+  // Function to handle filter change
+  function handleFilterChange(event) {
+    const filter = event.target.value;
+    setSelectedFilter(filter);
+    filterCourses(filter);
   }
 
-  function filteredCourses(input, courses) {
-    return courses.filter((course) => {
-      return course.name.toLowerCase().match(input.toLowerCase());
-    });
-  }
-
+  // Function to handle search input change
   function handleSearchChange(event) {
     const search = event.target.value;
     const result = search.length
-      ? filteredCourses(input, allCourses)
+      ? allCourses.filter((course) =>
+          course.name.toLowerCase().includes(search.toLowerCase())
+        )
       : allCourses;
     setInput(search);
     setCourses(result);
@@ -56,11 +53,14 @@ const CoursesIndex = ({ API }) => {
       });
   }, [API]);
 
-  // Extract all unique subjects
-  const subjects = [
-    "All",
-    ...new Set(allCourses.map((course) => course.subject)),
-  ];
+  // Extract all unique subjects and difficulty levels
+  const subjects = new Set(allCourses.map((course) => course.subject));
+  const difficulties = new Set(allCourses.map((course) => course.difficulty));
+
+  // Combine subjects and difficulties into a single list of options
+  const filters = ["All", ...new Set([...subjects, ...difficulties])];
+
+  console.log(courses[0].cost);
 
   return (
     <>
@@ -83,18 +83,17 @@ const CoursesIndex = ({ API }) => {
           <div className="ml-4">
             <select
               className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              value={selectedSubject}
-              onChange={handleSubjectChange}
+              value={selectedFilter}
+              onChange={handleFilterChange}
             >
-              {subjects.map((subject, index) => (
-                <option key={index} value={subject}>
-                  {subject}
+              {filters.map((filter, index) => (
+                <option key={index} value={filter}>
+                  {filter}
                 </option>
               ))}
             </select>
           </div>
         </div>
-
         <div className="text-4xl font-extrabold">Courses</div>
         <hr className="mt-1 mb-6 border-2" />
         <div>
