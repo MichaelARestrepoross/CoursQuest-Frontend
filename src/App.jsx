@@ -15,14 +15,8 @@ const App = () => {
   const API = import.meta.env.VITE_API_URL;
 
   //usestate for all courses
-  const [courses, setCourses] = useState([]);
-  const [user, setUser] = useState([]);
 
-  useEffect(() => {
-    fetch(`${API}/api/courses`)
-      .then((res) => res.json())
-      .then((data) => setCourses(data));
-  }, []);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     fetch(`${API}/api/users/1`)
@@ -36,10 +30,19 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/courses" element={<CoursesIndex courses={courses} />} />
-          <Route path="/courses/:id" element={<DetailedCourse API={API} user = {user} />} />
-          <Route path="/courses/:id/edit" element={<ReviewForm API={API} user = {user}/>} />
-          <Route path="/courses/new" element={<ReviewForm API={API} user ={user} />} />
+          <Route path="/courses" element={<CoursesIndex API={API} />} />
+          <Route
+            path="/courses/:id"
+            element={<DetailedCourse API={API} user={user} />}
+          />
+          <Route
+            path="/courses/:id/edit"
+            element={<ReviewForm API={API} user={user} />}
+          />
+          <Route
+            path="/courses/new"
+            element={<ReviewForm API={API} user={user} />}
+          />
 
           <Route path="/account" element={<UserDetails API={API} />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
