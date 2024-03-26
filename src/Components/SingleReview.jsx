@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const SingleReview = ({ review, API }) => {
+const SingleReview = ({ review, API, user }) => {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    fetch(`${API}/api/users/${review.user_id}`)
+    fetch(`${API}/api/users/${review.user_id ||1}`)
       .then((response) => response.json())
       .then((userData) => {
         setUserName(userData.name);
