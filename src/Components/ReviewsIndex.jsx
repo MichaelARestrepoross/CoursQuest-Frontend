@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SingleReview from "./SingleReview";
 
-const ReviewsIndex = ({ API, filterdReviews }) => {
+const ReviewsIndex = ({ API, filterdReviews, user }) => {
   // const [reviews, setReviews] = useState(filteredReviews);
 
   return (
@@ -11,7 +11,7 @@ const ReviewsIndex = ({ API, filterdReviews }) => {
         {filterdReviews &&
           filterdReviews.map((review) => (
             <div key={review.id}>
-              <SingleReview review={review} API={API} />
+              <SingleReview review={review} API={API} user ={user} />
             </div>
           ))}
       </div>

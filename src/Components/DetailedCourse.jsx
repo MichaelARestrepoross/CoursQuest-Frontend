@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReviewsIndex from "./ReviewsIndex";
 
-const DetailedCourse = ({ API }) => {
+const DetailedCourse = ({ API, user }) => {
   const { id } = useParams();
   const [course, setCourse] = useState([]);
 
@@ -91,7 +91,7 @@ const DetailedCourse = ({ API }) => {
       </div>
       <section>
         <h1>Reviews</h1>
-        <ReviewsIndex filterdReviews={filterdReviews} API={API} />
+        <ReviewsIndex filterdReviews={filterdReviews} API={API} user = {user}/>
 
         <h2>Username: </h2>
         {/* <p>{review}</p> */}
