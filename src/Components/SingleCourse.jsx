@@ -12,12 +12,12 @@ const SingleCourse = ({ course }) => {
       className="shadow-2xl rounded-xl overflow-hidden bg-white hover:scale-105 transition-transform duration-300"
       onClick={() => navigateCourse(course.id)}
     >
-      {/* <img
+      <img
         className="rounded-t-xl w-full h-24 object-cover"
         src={course.image_url}
         alt="course image"
-      /> */}
-      <div className="h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-t-xl w-full"></div>
+      />
+      {/* <div className="h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-t-xl w-full"></div> */}
       <div className="bg-white h-56 mb-2 rounded-b-xl p-3">
         <div className="text-2xl border-b-2 pb-1 mb-2 font-semibold">
           {course.name}
