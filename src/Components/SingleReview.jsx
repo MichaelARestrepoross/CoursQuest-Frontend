@@ -21,7 +21,6 @@ const SingleReview = ({ review, API, user }) => {
             <p className="text-lg ml-2">{"⭐️".repeat(review.rating)}</p>
           </div>
           <div>
-            {console.log(user.name)}
             <p className="text-lg">{review.review}</p>
           </div>
         </div>
