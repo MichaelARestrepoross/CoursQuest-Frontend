@@ -19,7 +19,10 @@ const CoursesIndex = ({ API }) => {
       setCourses(allCourses);
     } else {
       const filtered = allCourses.filter(
-        (course) => course.subject === filter || course.difficulty === filter
+        (course) =>
+          course.subject === filter ||
+          course.difficulty === filter ||
+          (course.cost === "0.00" && filter === "Free")
       );
       setCourses(filtered);
     }
@@ -53,14 +56,18 @@ const CoursesIndex = ({ API }) => {
       });
   }, [API]);
 
-  // Extract all unique subjects and difficulty levels
+  // Extract all unique subjects, difficulties, and costs
   const subjects = new Set(allCourses.map((course) => course.subject));
   const difficulties = new Set(allCourses.map((course) => course.difficulty));
 
-  // Combine subjects and difficulties into a single list of options
-  const filters = ["All", ...new Set([...subjects, ...difficulties])];
+  // Filter out "0.00" cost and replace it with "Free"
+  const filteredCosts = ["Free"];
 
-  console.log(courses[0].cost);
+  // Combine subjects, difficulties, and costs into a single list of options
+  const filters = [
+    "All",
+    ...new Set([...subjects, ...difficulties, ...filteredCosts]),
+  ];
 
   return (
     <>
