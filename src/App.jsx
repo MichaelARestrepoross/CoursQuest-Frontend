@@ -14,8 +14,6 @@ const App = () => {
   //define api url
   const API = import.meta.env.VITE_API_URL;
 
-  //usestate for all courses
-
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -30,17 +28,18 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+
           <Route path="/courses" element={<CoursesIndex API={API} />} />
           <Route
             path="/courses/:id"
             element={<DetailedCourse API={API} user={user} />}
           />
           <Route
-            path="/courses/:id/edit"
+            path="/courses/:id/edit/:reviewId"
             element={<ReviewForm API={API} user={user} />}
           />
           <Route
-            path="/courses/new"
+            path="/courses/:id/new"
             element={<ReviewForm API={API} user={user} />}
           />
 
