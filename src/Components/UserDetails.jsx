@@ -40,7 +40,8 @@ const UserDetails = ({ API }) => {
             </p>
           </div>
           <h3 className="text-3xl font-bold mb-4">My Courses</h3>
-          <div className="border-b-2 border-gray-300 mb-6"></div>
+          <hr className="mt-1 mb-6 border-2" />
+
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {user.filteredCourses.map((course) => (
               <SingleCourse key={course.id} course={course} />
