@@ -4,23 +4,44 @@ import SingleCourse from "./SingleCourse";
 import { Search } from "lucide-react";
 
 const CoursesIndex = ({ API }) => {
-  //useState for All Courses
+  // useState for All Courses
   const [allCourses, setAllCourses] = useState([]);
-  //useState for filtered courses
+  // useState for filtered courses
   const [courses, setCourses] = useState([]);
-  //useState for search bar inputs
+  // useState for search bar inputs
   const [input, setInput] = useState("");
+  // useState for selected filter
+  const [selectedFilter, setSelectedFilter] = useState("");
 
-  function filteredCourses(input, courses) {
-    return courses.filter((course) => {
-      return course.name.toLowerCase().match(input.toLowerCase());
-    });
+  // Function to filter courses based on selected filter
+  function filterCourses(filter) {
+    if (filter === "All") {
+      setCourses(allCourses);
+    } else {
+      const filtered = allCourses.filter(
+        (course) =>
+          course.subject === filter ||
+          course.difficulty === filter ||
+          (course.cost === "0.00" && filter === "Free")
+      );
+      setCourses(filtered);
+    }
   }
 
+  // Function to handle filter change
+  function handleFilterChange(event) {
+    const filter = event.target.value;
+    setSelectedFilter(filter);
+    filterCourses(filter);
+  }
+
+  // Function to handle search input change
   function handleSearchChange(event) {
     const search = event.target.value;
     const result = search.length
-      ? filteredCourses(input, allCourses)
+      ? allCourses.filter((course) =>
+          course.name.toLowerCase().includes(search.toLowerCase())
+        )
       : allCourses;
     setInput(search);
     setCourses(result);
@@ -33,7 +54,20 @@ const CoursesIndex = ({ API }) => {
         setAllCourses(data);
         setCourses(data);
       });
-  }, []);
+  }, [API]);
+
+  // Extract all unique subjects, difficulties, and costs
+  const subjects = new Set(allCourses.map((course) => course.subject));
+  const difficulties = new Set(allCourses.map((course) => course.difficulty));
+
+  // Filter out "0.00" cost and replace it with "Free"
+  const filteredCosts = ["Free"];
+
+  // Combine subjects, difficulties, and costs into a single list of options
+  const filters = [
+    "All",
+    ...new Set([...subjects, ...difficulties, ...filteredCosts]),
+  ];
 
   return (
     <>
@@ -52,6 +86,19 @@ const CoursesIndex = ({ API }) => {
               value={input}
               onChange={handleSearchChange}
             />
+          </div>
+          <div className="ml-4">
+            <select
+              className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              value={selectedFilter}
+              onChange={handleFilterChange}
+            >
+              {filters.map((filter, index) => (
+                <option key={index} value={filter}>
+                  {filter}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="text-4xl font-extrabold">Courses</div>
