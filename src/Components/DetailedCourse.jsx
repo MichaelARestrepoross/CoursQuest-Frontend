@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewsIndex from "./ReviewsIndex";
 import { Book } from "lucide-react";
-import { enrollCourse } from "../Helpers/detailedCourseHelper";
+import { enrollCourse, AverageRating  } from "../Helpers/detailedCourseHelper";
 
 const DetailedCourse = ({ API, user }) => {
   const navigate = useNavigate();
@@ -120,6 +120,7 @@ const DetailedCourse = ({ API, user }) => {
                   {difficulty}
                 </div>
               </div>
+              <div>{filterdReviews ? "⭐️".repeat(AverageRating(filterdReviews)): null}</div>
             </span>
             <span className="flex flex-row gap-2 mb-2">
               <p className="date">
