@@ -30,3 +30,18 @@ export const enrollCourse = async (courseId, userId, enrolled) => {
     }
   };
   
+  export function averageRating(filterdReviews) {
+    if (filterdReviews.length === 0) {
+        return 0; // Return 0 if there are no reviews
+    }
+    const sum = filterdReviews.reduce((accumulator, review) => {
+        return accumulator + review.rating;
+    }, 0);
+
+    // Calculate the average 
+    const average = sum / filterdReviews.length;
+    const roundedAverage = Math.round(average);
+
+    return roundedAverage;
+  }
+  
