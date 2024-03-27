@@ -30,7 +30,7 @@ export const enrollCourse = async (courseId, userId, enrolled) => {
     }
   };
   
-  export function AverageRating(filterdReviews) {
+  export function averageRating(filterdReviews) {
     if (filterdReviews.length === 0) {
         return 0; // Return 0 if there are no reviews
     }
