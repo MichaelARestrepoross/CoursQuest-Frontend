@@ -41,9 +41,6 @@ const SingleReview = ({
   function navigateEditForm(id, reviewid) {
     navigate(`/courses/${id}/edit/${reviewid}`);
   }
-  function navigateNewForm(id) {
-    navigate(`http://localhost:3000/courses/${id}/new`);
-  }
 
   const isCurrentUserReview = review.user_id === user.id;
 
