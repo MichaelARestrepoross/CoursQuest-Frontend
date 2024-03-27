@@ -73,69 +73,71 @@ const ReviewForm = ({ user }) => {
   };
 
   return (
-    <div className="p-24">
-      <div className="border-4 border-grey-300 rounded-xl shadow-xl p-3">
-        <div className="text-2xl text-center font-bold pb-4">
-          Please Leave A Review
-        </div>
-        <form onSubmit={handleSubmit} className="">
-          <div className="flex flex-col items-center space-y-3">
-            <div className=" flex justify-center items-center">
-              {" "}
-              {/* Added justify-center and items-center */}
-              <label
-                htmlFor="rating"
-                className="text-gray-700 pr-2 mr-3 bg-gradient-to-br from-amber-300 to-yellow-200 rounded pl-2 shadow-sm"
-              >
-                Rating:
-              </label>
-              <input
-                id="rating"
-                type="number"
-                name="rating"
-                min="1"
-                max="5"
-                step="1"
-                value={newOrUpdatedReview.rating}
-                onChange={handleTextChange}
-                className="border border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500 "
-              />
-            </div>
-            <div className=" flex justify-center items-center">
-              <textarea
-                style={{ resize: "none" }}
-                id="review"
-                type="text"
-                name="review"
-                value={newOrUpdatedReview.review}
-                onChange={handleTextChange}
-                className="border border-gray-300 p-2 rounded-md h-40 focus:outline-none focus:border-blue-500 shadow"
-                placeholder="Please leave your review here!"
-                minlength="10"
-                maxlength="100"
-                required
-              />
-            </div>
+    <div className="flex justify-center items-center h-screen ml-24">
+      <div className="p-24">
+        <div className="w-2/3 border-4 border-grey-300 rounded-xl shadow-xl p-3">
+          <div className="text-2xl text-center font-bold pb-4">
+            Please Leave A Review
           </div>
+          <form onSubmit={handleSubmit} className="">
+            <div className="flex flex-col items-center space-y-3">
+              <div className=" flex justify-center items-center">
+                {" "}
+                {/* Added justify-center and items-center */}
+                <label
+                  htmlFor="rating"
+                  className="text-gray-700 pr-2 mr-3 bg-gradient-to-br from-amber-300 to-yellow-200 rounded pl-2 shadow-sm"
+                >
+                  Rating:
+                </label>
+                <input
+                  id="rating"
+                  type="number"
+                  name="rating"
+                  min="1"
+                  max="5"
+                  step="1"
+                  value={newOrUpdatedReview.rating}
+                  onChange={handleTextChange}
+                  className="border border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500 "
+                />
+              </div>
+              <div className=" flex justify-center items-center">
+                <textarea
+                  style={{ resize: "none" }}
+                  id="review"
+                  type="text"
+                  name="review"
+                  value={newOrUpdatedReview.review}
+                  onChange={handleTextChange}
+                  className="w-full border border-gray-300 p-2 rounded-md h-40 focus:outline-none focus:border-blue-500 shadow"
+                  placeholder="Please leave your review here!"
+                  minLength="10"
+                  maxLength="100"
+                  required
+                />
+              </div>
+            </div>
 
-          <div className="flex justify-center">
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-45 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4"
-            >
-              {reviewId ? "Update" : "Submit"}
-            </button>
-            {/* Cancel Button */}
-            <button
-              onClick={() => navigate(-1)}
-              type="submit"
-              className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md w-65 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4 ml-5"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
+            <div className="flex justify-start">
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4"
+              >
+                {reviewId ? "Update" : "Submit"}
+              </button>
+              {/* Cancel Button */}
+              <button
+                onClick={() => navigate(-1)}
+                type="submit"
+                className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4 ml-3"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
