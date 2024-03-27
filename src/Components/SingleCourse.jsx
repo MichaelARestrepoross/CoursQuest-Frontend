@@ -26,7 +26,6 @@ const SingleCourse = ({ course }) => {
           {course.subject}
         </div>
         <div className="my-2">{course.description}</div>
-        <div>Rating: {"🍌".repeat(course.rating)}</div>
         {course.cost === "0.00" ? (
           <div className="text-green-500 font-bold mt-1">FREE</div>
         ) : (
