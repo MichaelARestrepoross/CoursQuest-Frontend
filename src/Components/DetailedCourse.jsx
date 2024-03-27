@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewsIndex from "./ReviewsIndex";
 import { Book } from "lucide-react";
+import { enrollCourse } from "../Helpers/detailedCourseHelper";
 
 const DetailedCourse = ({ API, user }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [course, setCourse] = useState([]);
   const [reviewToggle, setReviewToggle] = useState(false);
+  const [enrolled, setEnrolled] = useState(false);
 
   useEffect(() => {
     fetch(`${API}/api/courses/${id}`)
@@ -15,6 +17,30 @@ const DetailedCourse = ({ API, user }) => {
       .then((data) => setCourse(data))
       .catch((error) => console.error(error));
   }, [id, reviewToggle]);
+
+  useEffect(() => {
+    if (user && course.user_id === user.id) {
+      setEnrolled(true);
+    } else {
+      setEnrolled(false);
+    }
+  }, [user, course]);
+
+
+  const handleEnrollToggle = async () => {
+    try {
+      if (!enrolled) {
+        await enrollCourse(id, user.id, true);
+        setEnrolled(true);
+      } else {
+        await enrollCourse(id, user.id, false);
+        setEnrolled(false);
+      }
+    } catch (error) {
+      console.error("Error toggling enrollment:", error);
+    }
+  };
+  
 
   const {
     name,
@@ -128,9 +154,9 @@ const DetailedCourse = ({ API, user }) => {
           </div>
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded inline-block my-5"
-            onClick={() => navigate("/account")}
+            onClick={handleEnrollToggle} // Invoke the function here
           >
-            {cost === "0.00" ? (
+            {enrolled ? "Unenroll" : cost === "0.00" ? (
               <p>
                 {" "}
                 Enroll for <span>FREE</span>
@@ -141,7 +167,6 @@ const DetailedCourse = ({ API, user }) => {
           </button>
         </div>
         <section className="md:w-1/4 bg-amber-400">
-          <h1>Reviews</h1>
           <ReviewsIndex
             filterdReviews={filterdReviews}
             API={API}
