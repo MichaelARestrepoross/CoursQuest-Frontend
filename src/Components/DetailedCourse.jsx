@@ -70,8 +70,12 @@ const DetailedCourse = ({ API, user }) => {
   }
   return (
     <div>
-      <div class="w-full h-24 lg:h-48">
-        <img src={image_url} alt={subject} class="w-full h-full object-cover" />
+      <div className="w-full h-24 lg:h-48">
+        <img
+          src={image_url}
+          alt={subject}
+          className="w-full h-full object-cover"
+        />
       </div>
       <div className="grid md:flex p-8">
         <div className="md:w-3/4">
@@ -81,7 +85,7 @@ const DetailedCourse = ({ API, user }) => {
               <p className="inline-block bg-gray-200 rounded-3xl px-3 ">
                 {subject}
               </p>
-              <p>
+              <div>
                 <div
                   className={`${getDifficultyColor(
                     difficulty
@@ -89,7 +93,7 @@ const DetailedCourse = ({ API, user }) => {
                 >
                   {difficulty}
                 </div>
-              </p>
+              </div>
             </span>
             <span className="flex flex-row gap-2 mb-2">
               <p className="date">
