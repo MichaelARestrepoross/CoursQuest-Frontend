@@ -1,66 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ReviewForm = ({ user }) => {
-  const navigate = useNavigate()
-  const { id, reviewId } = useParams()
+  const navigate = useNavigate();
+  const { id, reviewId } = useParams();
 
   const [newOrUpdatedReview, setNewOrUpdatedReview] = useState({
     user_id: user && user.id ? user.id : undefined,
     course_id: id,
-    rating: '',
-    review: ''
-  })
+    rating: "",
+    review: "",
+  });
 
   useEffect(() => {
     if (reviewId) {
       fetch(`http://localhost:3003/api/reviews/${reviewId}`)
-        .then(response => response.json())
-        .then(data => {
-          setNewOrUpdatedReview(data)
+        .then((response) => response.json())
+        .then((data) => {
+          setNewOrUpdatedReview(data);
         })
-        .catch(error => {
-          console.error('Error fetching review details:', error.message)
-        })
+        .catch((error) => {
+          console.error("Error fetching review details:", error.message);
+        });
     }
-  }, [reviewId])
+  }, [reviewId]);
 
   const handleTextChange = (event) => {
     setNewOrUpdatedReview({
       ...newOrUpdatedReview,
       [event.target.id]: event.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const url = reviewId ? `http://localhost:3003/api/reviews/${reviewId}` : 'http://localhost:3003/api/reviews'
+    const url = reviewId
+      ? `http://localhost:3003/api/reviews/${reviewId}`
+      : "http://localhost:3003/api/reviews";
 
     fetch(url, {
-      method: reviewId ? 'PUT' : 'POST',
+      method: reviewId ? "PUT" : "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newOrUpdatedReview),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(reviewId ? 'Failed to update review' : 'Failed to submit review')
-      }
-      console.log(reviewId ? 'Review updated successfully' : 'Review submitted successfully')
-      setNewOrUpdatedReview({
-        user_id: user.id,
-        course_id: id,
-        rating: '',
-        review: ''
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            reviewId ? "Failed to update review" : "Failed to submit review"
+          );
+        }
+        console.log(
+          reviewId
+            ? "Review updated successfully"
+            : "Review submitted successfully"
+        );
+        setNewOrUpdatedReview({
+          user_id: user.id,
+          course_id: id,
+          rating: "",
+          review: "",
+        });
       })
-    })
-    .then (() => {navigate(`/courses/${id}`)})
-    .catch(error => {
-      console.error('Error:', error.message)
-    })
-  }
+      .then(() => {
+        navigate(`/courses/${id}`);
+      })
+      .catch((error) => {
+        console.error("Error:", error.message);
+      });
+  };
 
   return (
     <div className="p-24">
@@ -93,6 +103,7 @@ const ReviewForm = ({ user }) => {
             </div>
             <div className=" flex justify-center items-center">
               <textarea
+                style={{ resize: "none" }}
                 id="review"
                 type="text"
                 name="review"
@@ -100,22 +111,34 @@ const ReviewForm = ({ user }) => {
                 onChange={handleTextChange}
                 className="border border-gray-300 p-2 rounded-md h-40 focus:outline-none focus:border-blue-500 shadow"
                 placeholder="Please leave your review here!"
+                minlength="10"
+                maxlength="100"
+                required
               />
             </div>
           </div>
 
           <div className="flex justify-center">
+            {/* Submit Button */}
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-45 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4"
             >
               {reviewId ? "Update" : "Submit"}
+            </button>
+            {/* Cancel Button */}
+            <button
+              onClick={() => navigate(-1)}
+              type="submit"
+              className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md w-65 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4 ml-5"
+            >
+              Cancel
             </button>
           </div>
         </form>
       </div>
     </div>
   );
-}
+};
 
-export default ReviewForm
+export default ReviewForm;
