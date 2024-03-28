@@ -142,7 +142,9 @@ const DetailedCourse = ({ API, user }) => {
             <span>
               <p className="pb-3 text-2xl font-semibold">Description:</p>
               <div className="text-md pb-3 mr-10">
-                <span className="">{description}</span>
+                <span className="">
+                  {description ? description.replace("`", "'") : null}
+                </span>
               </div>
             </span>
             <div className="bg-gray-100 rounded p-1 inline-block items-center">

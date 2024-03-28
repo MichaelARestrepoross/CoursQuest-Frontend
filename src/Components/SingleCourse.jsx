@@ -25,7 +25,9 @@ const SingleCourse = ({ course }) => {
         <div className="inline-block bg-gray-200 rounded-3xl px-3 mb-1">
           {course.subject}
         </div>
-        <div className="my-2">{course.description}</div>
+        <div className="my-2 line-clamp-3">
+          {course.description.replace("`", "'")}
+        </div>
         {course.cost === "0.00" ? (
           <div className="text-green-500 font-bold mt-1">FREE</div>
         ) : (

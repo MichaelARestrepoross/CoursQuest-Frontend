@@ -79,7 +79,7 @@ const CoursesIndex = ({ API }) => {
               <Search className="h-6 w-6 text-gray-300 ml-2" />
             </div>
             <input
-              className="h-full flex-grow outline-none text-sm  text-gray-200 rounded-xl"
+              className="h-full flex-grow outline-none text-sm text-black rounded-xl"
               type="text"
               id="search"
               placeholder="Search.."
