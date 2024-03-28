@@ -17,9 +17,9 @@ const ReviewsIndex = ({
   }
 
   return (
-    <div className=" px-4 border border-gray-300 rounded-lg shadow-md p-2">
-      <div className="bg-slate-400 text-center py-4  m-2">
-        <h2 className=""> Course Reviews</h2>
+    <div className=" px-4 border border-gray-300 rounded-xl shadow-md p-2">
+      <div className="bg-white text-center rounded-lg py-4 m-2">
+        <h2 className="font-bold py-2 text-3xl"> Course Reviews</h2>
         <button
           onClick={() => navigateNewForm(id)}
           className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
@@ -27,7 +27,7 @@ const ReviewsIndex = ({
           New Review 📝
         </button>
       </div>
-      <div className="">
+      <div className="overflow-y-auto h-[400px]">
         {filterdReviews &&
           filterdReviews.map((review) => (
             <div key={review.id}>
