@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewsIndex from "./ReviewsIndex";
 import { Book } from "lucide-react";
-import { enrollCourse, averageRating  } from "../Helpers/detailedCourseHelper";
+import { enrollCourse, averageRating } from "../Helpers/detailedCourseHelper";
 
 const DetailedCourse = ({ API, user }) => {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ const DetailedCourse = ({ API, user }) => {
     }
   }, [user, course]);
 
-
   const handleEnrollToggle = async () => {
     try {
       if (!enrolled) {
@@ -40,7 +39,6 @@ const DetailedCourse = ({ API, user }) => {
       console.error("Error toggling enrollment:", error);
     }
   };
-  
 
   const {
     name,
@@ -120,7 +118,11 @@ const DetailedCourse = ({ API, user }) => {
                   {difficulty}
                 </div>
               </div>
-              <div>{filterdReviews ? "⭐️".repeat(averageRating(filterdReviews)): null}</div>
+              <div>
+                {filterdReviews
+                  ? "⭐️".repeat(averageRating(filterdReviews))
+                  : null}
+              </div>
             </span>
             <span className="flex flex-row gap-2 mb-2">
               <p className="date">
@@ -139,8 +141,10 @@ const DetailedCourse = ({ API, user }) => {
             </span>
             <span>
               <p className="pb-3 text-2xl font-semibold">Description:</p>
-              <div className="text-md pb-3">
-                <span className="">{description}</span>
+              <div className="text-md pb-3 mr-10">
+                <span className="">
+                  {description ? description.replace("`", "'") : null}
+                </span>
               </div>
             </span>
             <div className="bg-gray-100 rounded p-1 inline-block items-center">
@@ -157,7 +161,9 @@ const DetailedCourse = ({ API, user }) => {
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded inline-block my-5"
             onClick={handleEnrollToggle} // Invoke the function here
           >
-            {enrolled ? "Unenroll" : cost === "0.00" ? (
+            {enrolled ? (
+              "Unenroll"
+            ) : cost === "0.00" ? (
               <p>
                 {" "}
                 Enroll for <span>FREE</span>
@@ -167,7 +173,7 @@ const DetailedCourse = ({ API, user }) => {
             )}
           </button>
         </div>
-        <section className="md:w-1/3 bg-gray-200 rounded-xl">
+        <section className="md:w-1/3 bg-gray-200 rounded-xl mb-24">
           <ReviewsIndex
             filterdReviews={filterdReviews}
             API={API}

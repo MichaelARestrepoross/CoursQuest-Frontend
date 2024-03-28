@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
     <div className="">
       <div>
-        <section className="bg-gray-800 text-white py-20 px-5 md:px-20">
+        <section className="bg-gray-800 text-white py-20 px-5 md:px-20 h-screen">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
               <div>

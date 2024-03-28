@@ -73,17 +73,25 @@ const ReviewForm = ({ user }) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ml-24">
-      <div className="p-24">
-        <div className="w-2/3 border-4 border-grey-300 rounded-xl shadow-xl p-3">
+    <div className="relative">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage:
+            "url('https://res.cloudinary.com/dvmczcg3f/image/upload/v1711646017/books_being_books_jpg_ufdxkr.jpg')",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-60"></div>
+      </div>
+      <div className="flex justify-center items-center h-screen">
+        <div className="max-w-80 min-w-72 z-10 relative border-4 border-gray-300 rounded-xl shadow-xl p-3 bg-gray-100">
           <div className="text-2xl text-center font-bold pb-4">
             Please Leave A Review
           </div>
-          <form onSubmit={handleSubmit} className="">
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col items-center space-y-3">
-              <div className=" flex justify-center items-center">
-                {" "}
-                {/* Added justify-center and items-center */}
+              <div className="flex justify-center items-center">
                 <label
                   htmlFor="rating"
                   className="text-gray-700 pr-2 mr-3 bg-gradient-to-br from-amber-300 to-yellow-200 rounded pl-2 shadow-sm"
@@ -99,10 +107,10 @@ const ReviewForm = ({ user }) => {
                   step="1"
                   value={newOrUpdatedReview.rating}
                   onChange={handleTextChange}
-                  className="border border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500 "
+                  className="border border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
                 />
               </div>
-              <div className=" flex justify-center items-center">
+              <div className="flex justify-center items-center">
                 <textarea
                   style={{ resize: "none" }}
                   id="review"
@@ -120,14 +128,12 @@ const ReviewForm = ({ user }) => {
             </div>
 
             <div className="flex justify-start">
-              {/* Submit Button */}
               <button
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4"
               >
                 {reviewId ? "Update" : "Submit"}
               </button>
-              {/* Cancel Button */}
               <button
                 onClick={() => navigate(-1)}
                 type="submit"
