@@ -73,13 +73,13 @@ const CoursesIndex = ({ API }) => {
     <>
       <div className="mx-16 py-12">
         <div className="text-5xl pb-12"></div>
-        <div className="flex items-center w-full h-12 rounded-xl focus-within:shadow-lg bg-white  border-4 border-grey-300 hover:border-gray-300 mb-12">
-          <div className="flex items-center flex-grow">
-            <div className="mr-2">
+        <div className="flex items-center  h-12 mb-12">
+          <div className="flex items-center flex-grow rounded-xl focus-within:shadow-lg bg-white  border-4 border-gray-300 hover:border-gray-400">
+            <div className="mr-2 ">
               <Search className="h-6 w-6 text-gray-300 ml-2" />
             </div>
             <input
-              className="h-full flex-grow outline-none text-sm text-gray-700"
+              className="h-full flex-grow outline-none text-sm  text-gray-200 rounded-xl"
               type="text"
               id="search"
               placeholder="Search.."
@@ -89,7 +89,7 @@ const CoursesIndex = ({ API }) => {
           </div>
           <div className="ml-4">
             <select
-              className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="flex justify-center items-center h-9 rounded-xl border-4 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               value={selectedFilter}
               onChange={handleFilterChange}
             >
