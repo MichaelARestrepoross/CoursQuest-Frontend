@@ -57,8 +57,8 @@ const SingleReview = ({
           </div>
           {isCurrentUserReview && (
             <div>
-              <button onClick={handleDeleteReview}>Delete</button>
-              <button onClick={() => navigateEditForm(id, review.id)}>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-1 rounded-md w-1/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4 mr-4" onClick={handleDeleteReview}>Delete</button>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-1 rounded-md w-1/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-4 mr-4" onClick={() => navigateEditForm(id, review.id)}>
                 Edit
               </button>
             </div>
