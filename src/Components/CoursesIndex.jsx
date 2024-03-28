@@ -94,11 +94,11 @@ const CoursesIndex = () => {
               value={selectedFilter}
               onChange={handleFilterChange}
             >
-              {filters.length > 0 && filters.map((filter, index) => (
+              {/* {filters.length > 0 && filters.map((filter, index) => (
                 <option key={index} value={filter}>
                   {filter}
                 </option>
-              ))}
+              ))} */}
             </select>
           </div>
         </div>
@@ -106,9 +106,9 @@ const CoursesIndex = () => {
         <hr className="mt-1 mb-6 border-2" />
         <div>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
-            {courses.length>0 && courses.map((course) => (
+            {/* {courses.length>0 && courses.map((course) => (
               <SingleCourse key={course.id} course={course} />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
