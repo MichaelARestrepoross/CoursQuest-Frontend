@@ -1,20 +1,21 @@
 # CourseQuest
 
+![Alt text](./Assets/coursquest-banner.png)
+
 ## Overview
 
 CourseQuest is a web application designed to help users discover and enroll in online courses. Whether you're looking to learn a new skill, advance your career, or explore a hobby, CourseQuest provides an easy-to-use platform for finding the perfect course to fit your needs.
 
 ## Transactions Management Backend
 
-[CoursQuest-Backend Link](https://github.com/MichaelARestrepoross/CoursQuest-Backend)
+[CourseQuest-Backend Link](https://github.com/MichaelARestrepoross/CoursQuest-Backend)
 
 ## Frontend Features
 
 - **Course Listings**: Browse a comprehensive list of available courses, including details such as course name, subject, description, instructor, start date, end date, difficulty level, and cost.
 - **Search and Filter**: Utilize the search bar and filter functionality to narrow down the list of courses based on specific criteria such as subject, difficulty level, cost, and start date.
 - **User Course View**: Users can view the courses they are currently enrolled in from their account page.
-- **Enrollment**: Enroll in courses directly from the detailed course page, making it easy to access course materials and start learning.
-- **Leave course from detailed course**: 
+- **Enrollment**: Enroll or unenroll in courses directly from the detailed course page, making it easy to access course materials and start learning.
 - **Course Details**: View detailed information about each course, including a description, instructor details, start and end dates, difficulty level, cost, and user reviews.
 - **Review System**: Read and write reviews for courses, sharing feedback and insights to help other users make informed decisions.
 - **Responsive Design**: Enjoy a seamless user experience across various devices and screen sizes, thanks to CourseQuest's responsive design.
