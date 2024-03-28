@@ -71,8 +71,7 @@ const CoursesIndex = ({ API }) => {
 
   return (
     <>
-      <div className="mx-16 py-12">
-        <div className="text-5xl pb-12"></div>
+      <div className="mx-16 pt-24 pb-36">
         <div className="flex items-center  h-12 mb-12">
           <div className="flex items-center flex-grow rounded-xl focus-within:shadow-lg bg-white  border-4 border-gray-300 hover:border-gray-400">
             <div className="mr-2 ">
