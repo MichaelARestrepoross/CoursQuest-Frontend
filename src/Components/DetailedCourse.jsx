@@ -167,7 +167,7 @@ const DetailedCourse = ({ API, user }) => {
             )}
           </button>
         </div>
-        <section className="md:w-1/3 bg-gray-200">
+        <section className="md:w-1/3 bg-gray-200 rounded-xl">
           <ReviewsIndex
             filterdReviews={filterdReviews}
             API={API}
