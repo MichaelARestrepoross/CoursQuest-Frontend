@@ -103,7 +103,7 @@ const DetailedCourse = ({ API, user }) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="grid md:flex p-8">
+      <div className="flex flex-col p-8">
         <div className="md:w-3/4">
           <div className="bg-twitter-blue">
             <h1 className="text-4xl font-bold">{name}</h1>
@@ -167,7 +167,7 @@ const DetailedCourse = ({ API, user }) => {
             )}
           </button>
         </div>
-        <section className="md:w-1/4 bg-gray-200">
+        <section className="md:w-full bg-gray-200">
           <ReviewsIndex
             filterdReviews={filterdReviews}
             API={API}
