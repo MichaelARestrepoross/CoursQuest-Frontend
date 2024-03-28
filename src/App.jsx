@@ -29,21 +29,20 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
 
-          <Route path="/courses" element={<CoursesIndex API={API} />} />
+          <Route path="/courses" element={<CoursesIndex />} />
           <Route
             path="/courses/:id"
-            element={<DetailedCourse API={API} user={user} />}
+            element={<DetailedCourse  user={user} />}
           />
           <Route
             path="/courses/:id/edit/:reviewId"
-            element={<ReviewForm API={API} user={user} />}
+            element={<ReviewForm  user={user} />}
           />
           <Route
             path="/courses/:id/new"
-            element={<ReviewForm API={API} user={user} />}
+            element={<ReviewForm  user={user} />}
           />
-
-          <Route path="/account" element={<UserDetails API={API} />} />
+          <Route path="/account" element={<UserDetails />} />
           <Route path="/aboutthedevs" element={<AboutTheDevs />} />
         </Routes>
         <Footer />

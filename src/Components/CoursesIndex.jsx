@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import SingleCourse from "./SingleCourse";
 import { Search } from "lucide-react";
 
-const CoursesIndex = ({ API }) => {
+
+const CoursesIndex = () => {
+  const API = import.meta.env.VITE_API_URL;
   // useState for All Courses
   const [allCourses, setAllCourses] = useState([]);
   // useState for filtered courses

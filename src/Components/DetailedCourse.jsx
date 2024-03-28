@@ -4,7 +4,8 @@ import ReviewsIndex from "./ReviewsIndex";
 import { Book } from "lucide-react";
 import { enrollCourse, averageRating } from "../Helpers/detailedCourseHelper";
 
-const DetailedCourse = ({ API, user }) => {
+const DetailedCourse = ({  user }) => {
+  const API = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { id } = useParams();
   const [course, setCourse] = useState([]);

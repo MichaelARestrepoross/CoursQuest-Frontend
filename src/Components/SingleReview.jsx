@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const SingleReview = ({
   review,
-  API,
   user,
   id,
   reviewToggle,
@@ -11,6 +10,7 @@ const SingleReview = ({
 }) => {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetch(`${API}/api/users/${review.user_id}`)
