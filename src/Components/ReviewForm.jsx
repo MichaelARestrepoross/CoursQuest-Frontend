@@ -2,22 +2,24 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const ReviewForm = ({ user }) => {
+  const API = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const { id, reviewId } = useParams();
 
   const [newOrUpdatedReview, setNewOrUpdatedReview] = useState({
     user_id: user && user.id ? user.id : undefined,
     course_id: id,
-    rating: "",
+    rating: 1,
     review: "",
   });
 
   useEffect(() => {
     if (reviewId) {
-      fetch(`http://localhost:3003/api/reviews/${reviewId}`)
+      fetch(`${API}/api/reviews/${reviewId}`)
         .then((response) => response.json())
-        .then((data) => {
-          setNewOrUpdatedReview(data);
+        .then(({ review }) => {
+          setNewOrUpdatedReview({ ...newOrUpdatedReview, review });
         })
         .catch((error) => {
           console.error("Error fetching review details:", error.message);
@@ -36,8 +38,8 @@ const ReviewForm = ({ user }) => {
     event.preventDefault();
 
     const url = reviewId
-      ? `http://localhost:3003/api/reviews/${reviewId}`
-      : "http://localhost:3003/api/reviews";
+      ? `${API}/api/reviews/${reviewId}`
+      : `${API}/api/reviews`;
 
     fetch(url, {
       method: reviewId ? "PUT" : "POST",
@@ -61,7 +63,7 @@ const ReviewForm = ({ user }) => {
           user_id: user.id,
           course_id: id,
           rating: "",
-          review: "",
+          review: 1,
         });
       })
       .then(() => {
@@ -105,7 +107,7 @@ const ReviewForm = ({ user }) => {
                   min="1"
                   max="5"
                   step="1"
-                  value={newOrUpdatedReview.rating}
+                  value={newOrUpdatedReview.rating.toString()}
                   onChange={handleTextChange}
                   className="border border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
                 />

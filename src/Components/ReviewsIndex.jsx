@@ -3,14 +3,12 @@ import SingleReview from "./SingleReview";
 import { useNavigate } from "react-router-dom";
 
 const ReviewsIndex = ({
-  
   filterdReviews,
   user,
   id,
   reviewToggle,
   setReviewToggle,
 }) => {
-  const API = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   function navigateNewForm(id) {
@@ -34,7 +32,6 @@ const ReviewsIndex = ({
             <div key={review.id}>
               <SingleReview
                 review={review}
-                API={API}
                 user={user}
                 id={id}
                 reviewToggle={reviewToggle}
