@@ -75,7 +75,7 @@ const CoursesIndex = () => {
   }, [API]);
 
   return (
-    <>{courses &&
+    <>{courses.length > 0 &&
       <div className="mx-16 pt-24 pb-36">
         <div className="flex items-center  h-12 mb-12">
           <div className="flex items-center flex-grow rounded-xl focus-within:shadow-lg bg-white  border-4 border-gray-300 hover:border-gray-400">
