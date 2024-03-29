@@ -1,4 +1,5 @@
-const API = import.meta.env.VITE_API_URL;
+// const API = import.meta.env.VITE_API_URL;
+const API = "https://coursquest-backend.onrender.com";
 
 export const enrollCourse = async (courseId, userId, enrolled) => {
   try {
