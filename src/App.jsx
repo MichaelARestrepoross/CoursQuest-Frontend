@@ -12,7 +12,8 @@ import UserDetails from "./Components/UserDetails";
 
 const App = () => {
   //define api url
-  const API = import.meta.env.VITE_API_URL;
+  // const API = import.meta.env.VITE_API_URL;
+  const API = "https://coursquest-backend.onrender.com";
 
   const [user, setUser] = useState([]);
 
