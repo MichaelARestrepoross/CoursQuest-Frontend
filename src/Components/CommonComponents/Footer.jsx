@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Copyright } from "lucide-react";
 import { BsGithub } from "react-icons/bs";
 
 const Footer = () => {
@@ -24,7 +23,6 @@ const Footer = () => {
             </Link>
           </div>
           <span className="flex flex-row pt-6 pb-4 text-white text-sm">
-            {/* <Copyright className="w-5 h-5 pr-1 pt-5" /> */}
             &#169;2024 CourseQuest Inc.
           </span>
         </div>

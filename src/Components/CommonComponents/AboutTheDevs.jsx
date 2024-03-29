@@ -1,6 +1,5 @@
 import { Linkedin } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
-import { FaHeadSideVirus } from "react-icons/fa";
 
 import { Mail } from "lucide-react";
 
@@ -18,7 +17,6 @@ const AboutTheDevs = () => {
           <div className="grid lg:grid-cols-2 md:gap-2 ml-12 pb-24">
             <div className="bg-gray-100/50 rounded-xl mx-10 my-10 shadow-2xl  backdrop-brightness-150 backdrop-blur-3xl bg-opacity-90 hover:bg-gray-100 w-3/4">
               <div className="grid grid-cols-4 h-full">
-                {/* <FaHeadSideVirus className="w-24 h-24 rounded p-2 mt-2 ml-10" /> */}
                 <div className="bg-red-500 rounded-tl-lg rounded-bl-lg text-5xl text-white flex items-center justify-center col-span-1">
                   AG
                 </div>
@@ -66,7 +64,6 @@ const AboutTheDevs = () => {
             </div>
             <div className="bg-gray-100/50  rounded-xl mx-10 my-10 shadow-2xl  backdrop-brightness-150 backdrop-blur-3xl bg-opacity-90 hover:bg-gray-100 w-3/4 ">
               <div className="grid grid-cols-4 h-full">
-                {/* <FaHeadSideVirus className="w-24 h-24 rounded p-2 mt-2 ml-10" /> */}
                 <div className="bg-amber-500 rounded-tl-lg rounded-bl-lg text-5xl text-white flex items-center justify-center col-span-1">
                   JP
                 </div>
@@ -112,7 +109,6 @@ const AboutTheDevs = () => {
             </div>
             <div className="bg-gray-100/50  rounded-xl mx-10 my-10 shadow-2xl  backdrop-brightness-150 backdrop-blur-3xl bg-opacity-90 hover:bg-gray-100 w-3/4 ">
               <div className="grid grid-cols-4 h-full">
-                {/* <FaHeadSideVirus className="w-24 h-24 rounded p-2 mt-2 ml-10" /> */}
                 <div className="bg-emerald-500 rounded-tl-lg rounded-bl-lg text-5xl text-white flex items-center justify-center col-span-1">
                   MR
                 </div>
@@ -158,7 +154,6 @@ const AboutTheDevs = () => {
             </div>
             <div className="bg-gray-100/50  rounded-xl mx-10 my-10 shadow-2xl  backdrop-brightness-150 backdrop-blur-3xl bg-opacity-90 hover:bg-gray-100 w-3/4 ">
               <div className="grid grid-cols-4 h-full">
-                {/* <FaHeadSideVirus className="w-24 h-24 rounded p-2 mt-2 ml-10" /> */}
                 <div className="bg-indigo-500 rounded-tl-lg rounded-bl-lg text-5xl text-white flex items-center justify-center col-span-1">
                   JB
                 </div>
