@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import SingleCourse from "./SingleCourse";
-import App from "../App";
-const UserDetails = ({  }) => {
-  // const { id } = useParams();
-  const API = import.meta.env.VITE_API_URL;
+
+const API = import.meta.env.VITE_API_URL;
+
+const UserDetails = () => {
 
   const [user, setUser] = useState(null);
   const URL = `${API}/api/users/1`;
-  const navigate = useNavigate();
-
-  function navigateCourse(Id) {
-    navigate(`/courses/${Id}`);
-  }
 
   useEffect(() => {
     fetch(URL)

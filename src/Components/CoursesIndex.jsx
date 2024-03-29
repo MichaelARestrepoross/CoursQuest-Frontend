@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import SingleCourse from "./SingleCourse";
 import { Search } from "lucide-react";
 
-
 const CoursesIndex = () => {
   const API = import.meta.env.VITE_API_URL;
   // useState for All Courses
@@ -14,6 +13,8 @@ const CoursesIndex = () => {
   const [input, setInput] = useState("");
   // useState for selected filter
   const [selectedFilter, setSelectedFilter] = useState("");
+  // useState for setting the filters
+  const [filters, setFilters] = useState([]);
 
   // Function to filter courses based on selected filter
   function filterCourses(filter) {
@@ -50,26 +51,28 @@ const CoursesIndex = () => {
   }
 
   useEffect(() => {
-    fetch(`${API}/api/courses`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API}/api/courses`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch course data');
+        }
+        const data = await response.json();
         setAllCourses(data);
         setCourses(data);
-      });
+  
+        const subjects = new Set(data.map((course) => course.subject));
+        const difficulties = new Set(data.map((course) => course.difficulty));
+        const filteredCosts = ["Free"];
+        const filters = ["All", ...new Set([...subjects, ...difficulties, ...filteredCosts])];
+        setFilters(filters);
+      } catch (error) {
+        console.error('Error fetching course data:', error);
+      }
+    };
+  
+    fetchData();
   }, [API]);
-
-  // Extract all unique subjects, difficulties, and costs
-  // const subjects = new Set(allCourses.map((course) => course.subject));
-  // const difficulties = new Set(allCourses.map((course) => course.difficulty));
-
-  // Filter out "0.00" cost and replace it with "Free"
-  const filteredCosts = ["Free"];
-
-  // Combine subjects, difficulties, and costs into a single list of options
-  // const filters = [
-  //   "All",
-  //   ...new Set([...subjects, ...difficulties, ...filteredCosts]),
-  // ];
 
   return (
     <>
@@ -89,26 +92,28 @@ const CoursesIndex = () => {
             />
           </div>
           <div className="ml-4">
-            {/* <select
+            <select
               className="flex justify-center items-center h-9 rounded-xl border-4 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               value={selectedFilter}
               onChange={handleFilterChange}
             >
-              {filters.length > 0 && filters.map((filter, index) => (
-                <option key={index} value={filter}>
-                  {filter}
-                </option>
-              ))}
-            </select> */}
+              {filters.length > 0 &&
+                filters.map((filter, index) => (
+                  <option key={index} value={filter}>
+                    {filter}
+                  </option>
+                ))}
+            </select>
           </div>
         </div>
         <div className="text-4xl font-extrabold">Courses</div>
         <hr className="mt-1 mb-6 border-2" />
         <div>
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
-            {/* {courses.length>0 && courses.map((course) => (
-              <SingleCourse key={course.id} course={course} />
-            ))} */}
+            {courses.length > 0 &&
+              courses.map((course) => (
+                <SingleCourse key={course.id} course={course} />
+              ))}
           </div>
         </div>
       </div>
