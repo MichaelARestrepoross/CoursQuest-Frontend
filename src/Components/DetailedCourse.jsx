@@ -4,8 +4,9 @@ import ReviewsIndex from "./ReviewsIndex";
 import { Book } from "lucide-react";
 import { enrollCourse, averageRating } from "../Helpers/detailedCourseHelper";
 
-const DetailedCourse = ({  user }) => {
-  const API = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_API_URL;
+
+const DetailedCourse = ({ user }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [course, setCourse] = useState([]);
@@ -177,7 +178,6 @@ const DetailedCourse = ({  user }) => {
         <section className="md:w-1/3 bg-gray-200 rounded-xl mb-24">
           <ReviewsIndex
             filterdReviews={filterdReviews}
-            API={API}
             user={user}
             id={course.id}
             reviewToggle={reviewToggle}
