@@ -4,7 +4,8 @@ import SingleCourse from "./SingleCourse";
 import { Search } from "lucide-react";
 
 const CoursesIndex = () => {
-  const API = import.meta.env.VITE_API_URL;
+  // const API = import.meta.env.VITE_API_URL;
+  const API = "https://coursquest-backend.onrender.com";
   // useState for All Courses
   const [allCourses, setAllCourses] = useState([]);
   // useState for filtered courses
@@ -49,55 +50,30 @@ const CoursesIndex = () => {
     setInput(search);
     setCourses(result);
   }
+
   useEffect(() => {
-    fetch(`${API}/api/courses`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API}/api/courses`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch course data');
+        }
+        const data = await response.json();
         setAllCourses(data);
         setCourses(data);
-      });
+  
+        const subjects = new Set(data.map((course) => course.subject));
+        const difficulties = new Set(data.map((course) => course.difficulty));
+        const filteredCosts = ["Free"];
+        const filters = ["All", ...new Set([...subjects, ...difficulties, ...filteredCosts])];
+        setFilters(filters);
+      } catch (error) {
+        console.error('Error fetching course data:', error);
+      }
+    };
+  
+    fetchData();
   }, [API]);
-
-  useEffect(() => {
-    // Extract all unique subjects, difficulties, and costs
-    const subjects = new Set(allCourses.map((course) => course.subject));
-    const difficulties = new Set(allCourses.map((course) => course.difficulty));
-
-    // Filter out "0.00" cost and replace it with "Free"
-    const filteredCosts = ["Free"];
-
-    // Combine subjects, difficulties, and costs into a single list of options
-    const filters = [
-      "All",
-      ...new Set([...subjects, ...difficulties, ...filteredCosts]),
-    ];
-
-    setFilters(filters);
-  }, []);
-  
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch(`${API}/api/courses`);
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch course data');
-  //       }
-  //       const data = await response.json();
-  //       setAllCourses(data);
-  //       setCourses(data);
-  
-  //       const subjects = new Set(data.map((course) => course.subject));
-  //       const difficulties = new Set(data.map((course) => course.difficulty));
-  //       const filteredCosts = ["Free"];
-  //       const filters = ["All", ...new Set([...subjects, ...difficulties, ...filteredCosts])];
-  //       setFilters(filters);
-  //     } catch (error) {
-  //       console.error('Error fetching course data:', error);
-  //     }
-  //   };
-  
-  //   fetchData();
-  // }, [API]);
 
   return (
     <>{courses.length > 0 &&
